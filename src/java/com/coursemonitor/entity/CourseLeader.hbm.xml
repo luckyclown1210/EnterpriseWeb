@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 23, 2016 2:24:42 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.coursemonitor.entity.CourseLeader" table="CourseLeader" schema="dbo" catalog="CourseMonitorReport" optimistic-lock="version">
+        <id name="clId" type="int">
+            <column name="CL_Id" />
+            <generator class="assigned" />
+        </id>
+        <property name="clName" type="string">
+            <column name="CL_Name" length="50" />
+        </property>
+        <set name="courses" table="Course" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CL_Id" />
+            </key>
+            <one-to-many class="com.coursemonitor.entity.Course" />
+        </set>
+    </class>
+</hibernate-mapping>
